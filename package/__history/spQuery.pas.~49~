@@ -1,0 +1,121 @@
+unit spQuery;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, Data.DB, FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client;
+
+resourcestring
+  TspQueryMsgErrorMultiTable = 'Foram informadas mais de uma tabela. Somente é possível utilizar uma tabela.';
+
+type
+  TspQuery = class(TFDQuery)
+  private
+    { Private declarations }
+    FspCondicoes : TStrings;
+    FspColunas   : TStrings;
+    FspTabelas   : TStrings;
+    procedure Internal_setSpColunas(const Value: TStrings);
+    procedure Internal_setSpCondicoes(const Value: TStrings);
+    procedure Internal_setSpTabelas(const Value: TStrings);
+    procedure Internal_setSQL;
+  protected
+    { Protected declarations }
+  public
+    { Public declarations }
+    constructor Create(AOwner : TComponent); override;
+    destructor  Destroy; override;
+  published
+    { Published declarations }
+    property spCondicoes : TStrings read FspCondicoes write Internal_setSpCondicoes;
+    property spColunas   : TStrings read FspColunas   write Internal_setSpColunas;
+    property spTabelas   : TStrings read FspTabelas   write Internal_setSpTabelas;
+  end;
+
+procedure Register;
+
+implementation
+
+procedure Register;
+begin
+  RegisterComponents('Duwe', [TspQuery]);
+end;
+
+{ TspQuery }
+
+constructor TspQuery.Create(AOwner: TComponent);
+begin
+  inherited Create(AOwner);
+
+  Self.FspCondicoes := TStringList.Create;
+  Self.FspCondicoes.Clear;
+
+  Self.FspColunas := TStringList.Create;
+  Self.FspColunas.Clear;
+
+  Self.FspTabelas := TStringList.Create;
+  Self.FspTabelas.Clear;
+end;
+
+destructor TspQuery.Destroy;
+begin
+  Self.FspCondicoes.Clear;
+  Self.FspColunas.Clear;
+  Self.FspTabelas.Clear;
+
+  FreeAndNil(Self.FspCondicoes);
+  FreeAndNil(Self.FspColunas);
+  FreeAndNil(Self.FspTabelas);
+
+  inherited;
+end;
+
+procedure TspQuery.Internal_setSpColunas(const Value: TStrings);
+var
+  vrVez : Integer;
+begin
+  Self.FspColunas.Clear;
+
+  for vrVez := 0 to Value.Count - 1 do
+    Self.FspColunas.Add(Value[vrVez]);
+
+  Self.Internal_setSQL;
+end;
+
+procedure TspQuery.Internal_setSpCondicoes(const Value: TStrings);
+var
+  vrVez : Integer;
+begin
+  Self.FspCondicoes.Clear;
+
+  for vrVez := 0 to Value.Count - 1 do
+    Self.FspCondicoes.Add(Value[vrVez]);
+end;
+
+procedure TspQuery.Internal_setSpTabelas(const Value: TStrings);
+var
+  vrVez : Integer;
+begin
+  Self.FspTabelas.Clear;
+
+  for vrVez := 0 to Value.Count - 1 do
+    Self.FspTabelas.Add(Value[vrVez]);
+end;
+
+procedure TspQuery.Internal_setSQL;
+begin
+//  Self.SQL.Clear;
+
+  if Self.FspTabelas.Count > 1 then
+    raise Exception.Create(TspQueryMsgErrorMultiTable);
+
+  //Self.SQL.Add(' SELECT ');
+  Self.SQL.AddStrings(Self.FspColunas);
+//  Self.SQL.Add(' FROM ');
+  Self.SQL.AddStrings(Self.FspTabelas);
+//  Self.SQL.Add(' WHERE ');
+  Self.SQL.AddStrings(Self.FspCondicoes);
+end;
+
+end.

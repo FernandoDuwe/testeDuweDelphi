@@ -1,0 +1,82 @@
+unit uSubForm;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.Buttons, Vcl.StdCtrls;
+
+type
+  TFSubForm = class(TForm)
+    pnTop: TPanel;
+    pnBody: TPanel;
+    btnUpdate: TButton;
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormShow(Sender: TObject);
+    procedure btnUpdateClick(Sender: TObject);
+  private
+    { Private declarations }
+  protected
+    procedure Internal_UpdateDatasets; virtual;
+    procedure Internal_UpdateComponentes; virtual;
+    procedure Internal_UpdateCalcs; virtual;
+    procedure Internal_Prepare; virtual;
+  public
+    { Public declarations }
+    procedure UpdateSubForm;
+  end;
+
+var
+  FSubForm: TFSubForm;
+
+implementation
+
+{$R *.dfm}
+
+procedure TFSubForm.btnUpdateClick(Sender: TObject);
+begin
+  Self.UpdateSubForm;
+end;
+
+procedure TFSubForm.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  Action := caFree;
+end;
+
+procedure TFSubForm.FormShow(Sender: TObject);
+begin
+  try
+    Self.Internal_Prepare;
+  finally
+    Self.UpdateSubForm;
+  end;
+end;
+
+procedure TFSubForm.Internal_Prepare;
+begin
+  //
+end;
+
+procedure TFSubForm.Internal_UpdateCalcs;
+begin
+  //
+end;
+
+procedure TFSubForm.Internal_UpdateComponentes;
+begin
+  //
+end;
+
+procedure TFSubForm.Internal_UpdateDatasets;
+begin
+  //
+end;
+
+procedure TFSubForm.UpdateSubForm;
+begin
+  Self.Internal_UpdateDatasets;
+  Self.Internal_UpdateComponentes;
+  Self.Internal_UpdateCalcs;
+end;
+
+end.

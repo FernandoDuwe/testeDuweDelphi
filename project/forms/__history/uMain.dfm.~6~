@@ -1,0 +1,41 @@
+object FMain: TFMain
+  Left = 0
+  Top = 0
+  Caption = 'FMain'
+  ClientHeight = 437
+  ClientWidth = 706
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  Menu = mmNavigation
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object sbStatus: TStatusBar
+    Left = 0
+    Top = 418
+    Width = 706
+    Height = 19
+    Panels = <
+      item
+        Text = 'Pronto'
+        Width = 50
+      end>
+    ExplicitLeft = 592
+    ExplicitTop = 408
+    ExplicitWidth = 0
+  end
+  object mmNavigation: TMainMenu
+    Left = 592
+    Top = 176
+    object arefas1: TMenuItem
+      Caption = 'Tarefas'
+    end
+    object Sobre1: TMenuItem
+      Caption = 'Sobre'
+    end
+  end
+end

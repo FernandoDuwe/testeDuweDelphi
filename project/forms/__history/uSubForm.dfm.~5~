@@ -1,0 +1,42 @@
+object FSubForm: TFSubForm
+  Left = 0
+  Top = 0
+  Caption = 'FSubForm'
+  ClientHeight = 201
+  ClientWidth = 447
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  FormStyle = fsMDIChild
+  OldCreateOrder = False
+  Visible = True
+  WindowState = wsMaximized
+  PixelsPerInch = 96
+  TextHeight = 13
+  object pnTop: TPanel
+    Left = 0
+    Top = 0
+    Width = 447
+    Height = 41
+    Align = alTop
+    TabOrder = 0
+    ExplicitLeft = 304
+    ExplicitTop = 88
+    ExplicitWidth = 185
+  end
+  object Panel1: TPanel
+    Left = 0
+    Top = 41
+    Width = 447
+    Height = 160
+    Align = alClient
+    TabOrder = 1
+    ExplicitLeft = 200
+    ExplicitTop = 96
+    ExplicitWidth = 185
+    ExplicitHeight = 41
+  end
+end

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2021/02/22 00:00:17.000.198,=C:\Users\silvi\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2021/02/22 00:00:32.000.674,C:\Users\silvi\Documents\Embarcadero\Studio\Projects\Project1.dproj=C:\Users\silvi\Documents\Embarcadero\Studio\Projects\ProvaDelphiApp.dproj</Transaction>
+    <Transaction>2021/02/22 00:00:39.000.386,C:\Users\silvi\Documents\Embarcadero\Studio\Projects\Unit1.pas=</Transaction>
+    <Transaction>2021/02/22 00:00:50.000.867,=C:\Users\silvi\Documents\Embarcadero\Studio\Projects\forms\uSubForm.pas</Transaction>
+    <Transaction>2021/02/22 00:00:50.000.918,=C:\Users\silvi\Documents\Embarcadero\Studio\Projects\forms\uTask1.pas</Transaction>
+    <Transaction>2021/02/22 00:00:50.000.822,=C:\Users\silvi\Documents\Embarcadero\Studio\Projects\forms\uMain.pas</Transaction>
+    <Transaction>2021/02/22 00:01:33.000.186,=C:\Users\silvi\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2021/02/22 00:01:54.000.033,C:\Users\silvi\Documents\Embarcadero\Studio\Projects\Unit1.dfm=C:\Users\silvi\Documents\Embarcadero\Studio\Projects\forms\uTask2.dfm</Transaction>
+    <Transaction>2021/02/22 00:01:54.000.033,C:\Users\silvi\Documents\Embarcadero\Studio\Projects\Unit1.pas=C:\Users\silvi\Documents\Embarcadero\Studio\Projects\forms\uTask2.pas</Transaction>
+    <Transaction>2021/02/22 00:02:13.000.955,=C:\Users\silvi\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2021/02/22 00:02:31.000.031,C:\Users\silvi\Documents\Embarcadero\Studio\Projects\Unit1.dfm=C:\Users\silvi\Documents\Embarcadero\Studio\Projects\forms\uTask3.dfm</Transaction>
+    <Transaction>2021/02/22 00:02:31.000.031,C:\Users\silvi\Documents\Embarcadero\Studio\Projects\Unit1.pas=C:\Users\silvi\Documents\Embarcadero\Studio\Projects\forms\uTask3.pas</Transaction>
+    <Transaction>2021/02/22 04:28:19.731,=C:\Users\silvi\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2021/02/22 04:28:33.181,C:\Users\silvi\Documents\Embarcadero\Studio\Projects\classes\uCountThread.pas=C:\Users\silvi\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+  </Transactions>
+</BorlandProject>

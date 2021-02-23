@@ -1,0 +1,95 @@
+unit uTask1;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uSubForm, Vcl.StdCtrls, Vcl.ExtCtrls,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Stan.Async, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client, spQuery, FireDAC.UI.Intf, FireDAC.Stan.Def,
+  FireDAC.Stan.Pool, FireDAC.Phys, FireDAC.VCLUI.Wait;
+
+type
+  TFTask1 = class(TFSubForm)
+    GroupBox1: TGroupBox;
+    mmSQLGerado: TMemo;
+    gbColunas: TGroupBox;
+    mmColunas: TMemo;
+    GroupBox2: TGroupBox;
+    mmCondicoes: TMemo;
+    Splitter1: TSplitter;
+    GroupBox3: TGroupBox;
+    Splitter2: TSplitter;
+    mmTabelas: TMemo;
+    spQuery1: TspQuery;
+    FDConnection1: TFDConnection;
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure mmColunasKeyUp(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+  private
+    { Private declarations }
+  protected
+    procedure Internal_UpdateComponentes; override;
+    procedure Internal_UpdateCalcs; override;
+    procedure Internal_Prepare; override;
+  public
+    { Public declarations }
+  end;
+
+var
+  FTask1: TFTask1;
+
+implementation
+
+{$R *.dfm}
+
+procedure TFTask1.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  inherited;
+
+  FTask1 := nil;
+end;
+
+procedure TFTask1.Internal_Prepare;
+begin
+  inherited;
+
+  mmColunas.Clear;
+  mmCondicoes.Clear;
+  mmTabelas.Clear;
+end;
+
+procedure TFTask1.Internal_UpdateCalcs;
+begin
+  inherited;
+
+  mmSQLGerado.Lines.Clear;
+  mmSQLGerado.Lines.AddStrings(spQuery1.SQL);
+end;
+
+procedure TFTask1.Internal_UpdateComponentes;
+begin
+  inherited;
+
+  try
+    spQuery1.spColunas   := mmColunas.Lines;
+    spQuery1.spTabelas   := mmTabelas.Lines;
+    spQuery1.spCondicoes := mmCondicoes.Lines;
+  except
+    mmTabelas.Lines.Clear;
+
+    raise;
+  end;
+end;
+
+procedure TFTask1.mmColunasKeyUp(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  inherited;
+
+  Self.UpdateSubForm;
+end;
+
+end.
